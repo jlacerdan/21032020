@@ -4,11 +4,10 @@ public class AppCofre {
 	
 	public static void main(String[] args) {
 		Cofre cofreSeguro = new Cofre();
-		cofreSeguro.abrir();
-		cofreSeguro.fechar();
 		
-		cofreSeguro.adicionarListener(new CofreListenerConsole());
-		
+		cofreSeguro.adicionarListenerAberto(new CofreListenerConsole());
+		cofreSeguro.adicionarListenerFechado(new CofreListenerConsole());
+
 		cofreSeguro.abrir();
 		cofreSeguro.fechar();
 

@@ -4,12 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Cofre {
-	private Set<CofreListener> listeners = new HashSet<>();
+	private Set<CofreAbertoListener> listenersAberto = new HashSet<>();
+	private Set<CofreFechadoListener> listenersFechado = new HashSet<>();
 	
 	public void fechar() {
 		System.out.println("fechar()");
 		//cofre foi fechado!
-		for (CofreListener listener : this.listeners) {
+		for (CofreFechadoListener listener : this.listenersFechado) {
 			listener.cofreFoiFechado();
 		}
 	}
@@ -18,13 +19,17 @@ public class Cofre {
 	public void abrir() {
 		System.out.println("abrir()");
 		//cofre foi aberto!
-		for (CofreListener listener : this.listeners) {
+		for (CofreAbertoListener listener : this.listenersAberto) {
 			listener.cofreFoiAberto();
 		}
 	}
 
-	public void adicionarListener(CofreListenerConsole listener) {
-		this.listeners.add(listener);
+	public void adicionarListenerAberto(CofreListenerConsole listener) {
+		this.listenersAberto.add(listener);
+	}
+
+	public void adicionarListenerFechado(CofreListenerConsole listener) {
+		this.listenersFechado.add(listener);
 	}
 
 }
